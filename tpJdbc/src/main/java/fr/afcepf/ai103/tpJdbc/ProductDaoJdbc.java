@@ -31,6 +31,20 @@ public class ProductDaoJdbc implements IProductDao {
 		
 		return cn;
 	}
+	
+	public static Long getAutoIncrPk(PreparedStatement pst ) {
+		Long pk= null;
+		try {
+			ResultSet rsKeys = pst.getGeneratedKeys();//récupérer valeur clef primaire 
+			if(rsKeys.next()){ pk= rsKeys.getLong(1);
+			}
+			rsKeys.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return pk;
+	}
+	
 
 	@Override
 	public Produit insererNouveauProduit(Produit p) {
@@ -42,10 +56,12 @@ public class ProductDaoJdbc implements IProductDao {
 			String reqSQL="insert into Produit(label,prix) values('"+p.getLabel()+"'," + p.getPrix()+")";
 			System.out.println(reqSQL);
 			st.executeUpdate(reqSQL);*/
-			PreparedStatement pst = cn.prepareStatement("insert into Produit(label,prix) values(?,?)");
+			PreparedStatement pst = cn.prepareStatement("insert into Produit(label,prix) values(?,?)",
+					                                     PreparedStatement.RETURN_GENERATED_KEYS);
 			pst.setString(1, p.getLabel()); //valeur de remplacement pour le ? numero 1
 			pst.setDouble(2, p.getPrix());  //valeur de remplacement pour le ? numero 2
 			pst.executeUpdate();
+			p.setNumero(getAutoIncrPk(pst));//mettre à jour la partie numero du produit ( null --> auto_increment pk)
 			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -7,13 +7,14 @@ public class TpJdbcApp {
 	public static void main(String[] args) {
 		IProductDao productDao = new ProductDaoJdbc();
 		
-		Produit nouveauProd = new Produit(null,"nouveau produit",1.123);
-		productDao.insererNouveauProduit(nouveauProd);
+		Produit nouveauProd = new Produit(null,"nouveau produit que j'aime",2.56);
+		nouveauProd = productDao.insererNouveauProduit(nouveauProd);
+		System.out.println("numero du produit insere=" + nouveauProd.getNumero());
 		
-		Produit produit2Modifie = new Produit(2L,"super stylo",2.23);
+		Produit produit2Modifie = new Produit(2L,"super super stylo",4.23);
 		productDao.mettreAjourProduit(produit2Modifie);
 		
-		Long numDeleted = 5L; 
+		Long numDeleted = 6L; 
 	    System.out.println("avant suppression du numero " + numDeleted);
 		affListProd(productDao);
 		
