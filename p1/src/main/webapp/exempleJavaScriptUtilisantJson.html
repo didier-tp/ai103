@@ -19,8 +19,8 @@
 	           url: "./ServletProduit?prixMaxi="+prixMaxi+"&format=json",
 			   success: function (data,status,xhr) {
 	               if (data) {
-				       //console.log(JSON.stringify(data));
-				       listeProduits = data;
+				       //console.log(data);
+				       listeProduits = JSON.parse(data);
 				       for(index in listeProduits){
 					       var p=listeProduits[index];
 					       console.log(JSON.stringify(p));
