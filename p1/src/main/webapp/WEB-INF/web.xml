@@ -19,4 +19,14 @@
     <servlet-name>ServletTva</servlet-name>
     <url-pattern>/ServletTva</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletProduit</display-name>
+    <servlet-name>ServletProduit</servlet-name>
+    <servlet-class>fr.afcepf.ai103.web.ServletProduit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletProduit</servlet-name>
+    <url-pattern>/ServletProduit</url-pattern>
+  </servlet-mapping>
 </web-app>
