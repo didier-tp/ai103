@@ -8,23 +8,28 @@
 </head>
 <body>
  <%
+ //valeurs par défaut:
+ double montant = 2000;
+ double nbMois = 24;
+ double tauxInteretAnnuel = 1.1;
  double mensualite = 0.0;
+ 
  String sMontant = request.getParameter("montant");
  String sNbMois = request.getParameter("nbMois");
  String sTauxInteret = request.getParameter("tauxInteret");
  if(sMontant!=null /* && ... */ ){
-	 double montant = Double.parseDouble(sMontant);
-	 double nbMois = Double.parseDouble(sNbMois);
-	 double tauxInteretAnnuel = Double.parseDouble(sTauxInteret);
-	 double tauxInteretMensuel = tauxInteretAnnuel / 12;
+	 montant = Double.parseDouble(sMontant);
+	 nbMois = Double.parseDouble(sNbMois);
+	 tauxInteretAnnuel = Double.parseDouble(sTauxInteret); //en pct
+	 double tauxInteretMensuel = (tauxInteretAnnuel / 100) / 12;
 	 mensualite = (montant * tauxInteretMensuel)  / (1 -  Math.pow(1+tauxInteretMensuel , -nbMois));
  }
 
  %>
  <form method="get" > <!-- sans action="url_a_declencher" la page se rappelle elle meme -->
-    montant : <input name="montant"><br/>
-    duree (nbMois) : <input name="nbMois"><br/>
-    tauxInteret : <input name="tauxInteret"><br/>
+    montant : <input name="montant"  value="<%=montant%>"><br/>
+    duree (nbMois) : <input name="nbMois" value="<%=nbMois%>"><br/>
+    tauxInteret : <input name="tauxInteret" value="<%=tauxInteretAnnuel%>"><br/>
     <input type="submit" value="calculer" />
  </form>
   
