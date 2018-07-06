@@ -25,7 +25,7 @@
 	
 	<dependency>
     	<groupId>com.fasterxml.jackson.core</groupId>
-    	<artifactId>jackson-databind</artifactId>
+    	<artifactId>jackson-databind</artifactId>    <!-- pour générer du JSON depuis du java et vice versa -->
     	<version>2.9.6</version>
     	<!-- si scope=compile par défaut le .jar est utilisé à la compilation et à l'execution
 	         et sera placé dans la partie WEB-INF/lib du .war à déployer dans tomcat -->
@@ -34,6 +34,8 @@
 	<dependency>
 	     <groupId>org.afcepf</groupId>
   		<artifactId>tpJdbc</artifactId>
+  		 <!--  maven placera dans la partie WEB-INF/lib du .war construit 
+  		       le fichier tpJdbc...jar (projet tpJdbc packagé )-->
  		 <version>0.0.1-SNAPSHOT</version>
 	</dependency>
   
