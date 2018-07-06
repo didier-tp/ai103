@@ -37,8 +37,9 @@ public class ServletProduit extends HttpServlet {
 		String sPrixMaxi = request.getParameter("prixMaxi");
 		double prixMaxi = (sPrixMaxi!=null && !sPrixMaxi.isEmpty())?Double.parseDouble(sPrixMaxi):99999999.0;
 		
+		String format = request.getParameter("format");
+		
 		PrintWriter out = response.getWriter();
-		response.setContentType("text/html");
 		
 		IProductDao productDao = new ProductDaoJdbc();
 		List<Produit>  listeProduits = productDao.rechercherProduits();
@@ -48,29 +49,26 @@ public class ServletProduit extends HttpServlet {
 			if(prod.getPrix() <=  prixMaxi )
 				listeProdPasCher.add(prod);
 		
-		out.println("<html><body>");
-		out.println("<table border='1'>");
-		out.println("<tr><th>numero</th><th>label</th><th>prix</th></tr>");
-		for(Produit p : listeProdPasCher) {
-			out.println("<tr><td>"+p.getNumero()+"</td><td>"+p.getLabel()
-			           +"</td><td>"+p.getPrix()+"</td></tr>");
+		if(format==null || format.equals("html")) {
+			response.setContentType("text/html");
+			
+			out.println("<html><body>");
+			out.println("<table border='1'>");
+			out.println("<tr><th>numero</th><th>label</th><th>prix</th></tr>");
+			for(Produit p : listeProdPasCher) {
+				out.println("<tr><td>"+p.getNumero()+"</td><td>"+p.getLabel()
+				           +"</td><td>"+p.getPrix()+"</td></tr>");
+			}
+			out.println("</table>");
+			out.println("</body></html>");
 		}
-		out.println("</table>");
-		out.println("</body></html>");
-	
-		
-		
-		/*
-		response.setContentType("application/json");
-		Produit prod1 = new Produit(1L,"prod1",1.0);
-		Produit prod2 = new Produit(2L,"prod2",2.0);
-		List<Produit> listeProd = new ArrayList<Produit>();
-		listeProd.add(prod1);  listeProd.add(prod2);
+		else if(format!=null && format.equals("json")) {
 		
 		ObjectMapper mapper = new ObjectMapper();
-		String listeProdAsJsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(listeProd);
+		String listeProdAsJsonString = mapper.writerWithDefaultPrettyPrinter()
+				                             .writeValueAsString(listeProdPasCher);
 		out.println(listeProdAsJsonString);
-		*/
+		}
 		
 	}
 
