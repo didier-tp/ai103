@@ -15,15 +15,17 @@
 	
 		 $.ajax({
 	           type: "GET",
+	           contentType : "application/json" ,
 	           url: "./ServletProduit?prixMaxi="+prixMaxi+"&format=json",
 			   success: function (data,status,xhr) {
 	               if (data) {
-				       console.log(JSON.stringify(data));
+				       //console.log(JSON.stringify(data));
 				       listeProduits = data;
 				       for(index in listeProduits){
 					       var p=listeProduits[index];
+					       console.log(JSON.stringify(p));
 					       $('#idListP').append('<li>'+ p.numero + ","
-					    		             + p.label + ","+p.prix + '<li>');					   
+					    		             + p.label + ","+p.prix + '</li>');					   
 					   }
 	               } else {
 	                   $("#spanMsg").html("Cannot GET produits !");
