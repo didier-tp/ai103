@@ -11,6 +11,23 @@
      <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   
+  <dependencies>
+   
+   
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>3.1.0</version>
+	    <!-- si scope=compile par défaut le .jar est utilisé à la compilation et à l'execution
+	         et sera placé dans la partie WEB-INF/lib du .war à déployer dans tomcat -->
+	    <!-- si scope=provided le .jar est utilisé à la compilation et est déjà
+	         fourni par le serveur (tomcat ou ...) et/ou la jvm -->
+	    <scope>provided</scope>
+	</dependency>
+  
+  </dependencies>
+  
+  
   <build>
       <finalName>p1</finalName> <!-- pour construire p1.war -->
   </build>
