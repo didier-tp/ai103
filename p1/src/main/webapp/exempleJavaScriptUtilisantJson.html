@@ -3,8 +3,47 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>javascript utilisant json</title>
+<script src="jquery-3.2.1.js"></script>
+
+ <script>
+	 
+      $(function() {
+	 	  
+	    
+		$('#btnSearch').on('click',function(){
+		 var prixMaxi = $('#txtPrixMaxi').val();
+	
+		 $.ajax({
+	           type: "GET",
+	           url: "./ServletProduit?prixMaxi="+prixMaxi+"&format=json",
+			   success: function (data,status,xhr) {
+	               if (data) {
+				       console.log(JSON.stringify(data));
+				       listeProduits = data;
+				       for(index in listeProduits){
+					       var p=listeProduits[index];
+					       $('#idListP').append('<li>'+ p.numero + ","
+					    		             + p.label + ","+p.prix + '<li>');					   
+					   }
+	               } else {
+	                   $("#spanMsg").html("Cannot GET produits !");
+	               }
+	           }
+			   });
+		 
+		});
+	
+      }); 
+   </script>
+
 </head>
 <body>
-    <!-- ./ServletProduit?prixMaxi=3&format=json -->
+      prixMaxi : <input id="txtPrixMaxi" type='text' value="1000"/><br/>
+     <input type='button' value="rechercher" id="btnSearch"/> <br/>
+	 <span id="spanMsg"></span> <br/>
+	 <ul id="idListP">
+	    <!-- futur <li> via code js -->
+	 </ul>
+    
 </body>
 </html>

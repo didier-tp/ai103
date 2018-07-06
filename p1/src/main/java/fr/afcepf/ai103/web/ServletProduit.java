@@ -36,11 +36,9 @@ public class ServletProduit extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sPrixMaxi = request.getParameter("prixMaxi");
 		double prixMaxi = (sPrixMaxi!=null && !sPrixMaxi.isEmpty())?Double.parseDouble(sPrixMaxi):99999999.0;
-		
 		String format = request.getParameter("format");
-		
 		PrintWriter out = response.getWriter();
-		
+
 		IProductDao productDao = new ProductDaoJdbc();
 		List<Produit>  listeProduits = productDao.rechercherProduits();
 		
@@ -51,7 +49,6 @@ public class ServletProduit extends HttpServlet {
 		
 		if(format==null || format.equals("html")) {
 			response.setContentType("text/html");
-			
 			out.println("<html><body>");
 			out.println("<table border='1'>");
 			out.println("<tr><th>numero</th><th>label</th><th>prix</th></tr>");
@@ -65,8 +62,8 @@ public class ServletProduit extends HttpServlet {
 		else if(format!=null && format.equals("json")) {
 		
 		ObjectMapper mapper = new ObjectMapper();
-		String listeProdAsJsonString = mapper.writerWithDefaultPrettyPrinter()
-				                             .writeValueAsString(listeProdPasCher);
+		//com.fasterxml.jackson.databind.ObjectMapper est une classe prédéfinie de jackson-databind qui sert à générer du json
+		String listeProdAsJsonString = mapper.writeValueAsString(listeProdPasCher);
 		out.println(listeProdAsJsonString);
 		}
 		
