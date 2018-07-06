@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.Date" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,13 +8,14 @@
 <title>emprunt</title>
 </head>
 <body>
+  <%@ include file="entete.jsp" %>
  <% //valeurs par défaut:
  double montant = 2000;
  double nbMois = 24;
  double tauxInteretAnnuel = 1.1;
  double mensualite = 0.0;
  
- Date d =new Date();
+
  
  String sMontant = request.getParameter("montant");
  String sNbMois = request.getParameter("nbMois");
@@ -35,6 +36,5 @@
  </form>
   mensualite =  <b><%=mensualite%></b>
   <hr/>
-  <%=d %>
 </body>
 </html>
