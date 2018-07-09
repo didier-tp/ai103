@@ -20,6 +20,10 @@ public class Client {
     
 	public Client() {
 		super();
+		this.nom="";
+		this.prenom="";
+		this.email="...@...fr";
+		this.age=0;
 	}
 
 
