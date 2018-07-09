@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.afcepf.ai103.web.model.Client;
 
@@ -45,7 +46,8 @@ public class ServletController extends HttpServlet {
 		  message=sAge + " = age invalide";
 		  pageSuite = "/saisirClient.jsp";
 	  }
-	  request.setAttribute("client", client); //on stocke dans request ou session des choses
+	  HttpSession session = request.getSession();
+	  /*request.*/session.setAttribute("client", client); //on stocke dans request ou session des choses
 	  request.setAttribute("message", message); //qui seront accessibles depuis les vues (pages JSP)
 	  RequestDispatcher rd ; 
 	  rd = this.getServletContext().getRequestDispatcher(pageSuite);

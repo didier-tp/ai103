@@ -9,9 +9,12 @@
 </head>
 <body>
      <%
-     Client cli = (Client) request.getAttribute("client");
+     //Client cli = (Client) /*request.*/session.getAttribute("client");
+     //et afichage avec <%= ...
      %>
-     client bien enregistré : <%=cli.toString() %>
-     
+     client bien enregistré : <i>${client.prenom}</i> , <b>${client.nom}</b> , 
+                              <i>${client.email}</i> , <b>${client.age}</b>
+     <hr/>      
+     <a href="index.html">retour vers index.html</a>
 </body>
 </html>

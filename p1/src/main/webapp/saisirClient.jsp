@@ -11,16 +11,14 @@
        <%
        String message = (String) request.getAttribute("message");
        if(message==null) message="";
-       Client client = (Client) request.getAttribute("client");
-       if(client==null) client = new Client();
        %>
        <p style="color:red;"><%=message%></p>
        <form action="./ServletController" method="post">
            <input type="hidden" name="task" value="client" />
-           nom: <input name="nom" value="<%=client.getNom()%>" /><br/>
-           prenom: <input name="prenom" value="<%=client.getPrenom()%>" /><br/>
-           email: <input name="email" value="<%=client.getEmail()%>" /><br/>
-           age: <input name="age" value="<%=client.getAge()%>" /><br/>
+           nom: <input name="nom" value="${client.nom}" /><br/>
+           prenom: <input name="prenom" value="${client.prenom}" /><br/>
+           email: <input name="email" value="${client.email}" /><br/>
+           age: <input name="age" value="${client.age}" /><br/>
            <input type="submit" value="enregistrer" />
        </form>
 </body>
