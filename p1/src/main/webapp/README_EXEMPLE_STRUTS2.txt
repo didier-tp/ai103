@@ -1,0 +1,1 @@
+https://github.com/didier-tp/gk_struts_jsf = exemple appli struts2.
