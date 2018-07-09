@@ -29,4 +29,14 @@
     <servlet-name>ServletProduit</servlet-name>
     <url-pattern>/ServletProduit</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletController</display-name>
+    <servlet-name>ServletController</servlet-name>
+    <servlet-class>fr.afcepf.ai103.web.ServletController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletController</servlet-name>
+    <url-pattern>/ServletController</url-pattern>
+  </servlet-mapping>
 </web-app>
