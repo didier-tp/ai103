@@ -19,6 +19,7 @@ public class DaoFactory {
 	
 	/* Singleton : une seule instance pour une certaine classe : ici DaoFactory */
 	private static DaoFactory uniqueInstance = null;
+	
 	public static synchronized DaoFactory getInstance() {
 		if(uniqueInstance==null) {
 			uniqueInstance=new DaoFactory();
@@ -33,7 +34,6 @@ public class DaoFactory {
 	/* method factory */
 	public ProductDao createProductDao() {
 		ProductDao productDao=null; //type de retour = interface ou classe abstraite
-		
 		/*
 		//version 1 (sans fichier de config):
 		productDao = new ProductDaoSimu();
