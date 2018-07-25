@@ -1,5 +1,6 @@
 package fr.afcepf.ai103.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class ProductDaoSimu implements ProductDao {
 		mapProduits.put(2L, new Produit(2L,"p2", 3.5));
 		lastNumero=2L;
 	}
-	@Override
+
 	public Produit insererNouveauProduit(Produit p) {
 		lastNumero++; //simuler auto_incr
 		p.setNumero(lastNumero);
@@ -24,22 +25,16 @@ public class ProductDaoSimu implements ProductDao {
 		return p;
 	}
 
-	@Override
 	public List<Produit> rechercherProduits() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Produit>(mapProduits.values());
 	}
 
-	@Override
 	public void mettreAjourProduit(Produit p) {
-		// TODO Auto-generated method stub
-
+		mapProduits.put(p.getNumero(),p);
 	}
 
-	@Override
+
 	public void supprimerProduit(Long numero) {
-		// TODO Auto-generated method stub
-
+		mapProduits.remove(numero);
 	}
-
 }
