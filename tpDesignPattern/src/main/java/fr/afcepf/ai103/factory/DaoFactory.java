@@ -32,6 +32,7 @@ public class DaoFactory {
 		//version 2 (avec config.properties)
 		ResourceBundle ressources = ResourceBundle.getBundle("config") ; // config.properties
 		String productDaoImplClassName = ressources.getString("ProductDao.impl"); 
+		System.out.println("ProductDao.impl="+productDaoImplClassName);
 		/*
 		// version 2.a (sans astuce):
 		switch(productDaoImplClassName) {
