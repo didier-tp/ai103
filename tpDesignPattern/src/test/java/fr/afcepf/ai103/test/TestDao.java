@@ -20,8 +20,12 @@ public class TestDao {
 		//this.productDao = new ProductDaoJdbc();
 		
 		//version a : avec DaoFactory et sans singleton:
-		DaoFactory daoFactory = new DaoFactory();
-		this.productDao = daoFactory.createProductDao();//dao construit en version JDBC ou Simu ou JPA
+		//DaoFactory daoFactory = new DaoFactory();
+		//this.productDao = daoFactory.createProductDao();//dao construit en version JDBC ou Simu ou JPA
+		
+		//version b : avec Singleton sur classe de Facbrique "DaoFactory":
+		this.productDao = DaoFactory.getInstance().createProductDao();
+		
 	}
 	
 	@Test

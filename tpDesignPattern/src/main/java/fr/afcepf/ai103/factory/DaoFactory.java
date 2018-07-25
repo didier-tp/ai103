@@ -17,6 +17,19 @@ import fr.afcepf.ai103.dao.ProductDaoSimu;
  */
 public class DaoFactory {
 	
+	/* Singleton : une seule instance pour une certaine classe : ici DaoFactory */
+	private static DaoFactory uniqueInstance = null;
+	public static synchronized DaoFactory getInstance() {
+		if(uniqueInstance==null) {
+			uniqueInstance=new DaoFactory();
+		}
+		return uniqueInstance;
+	}
+	private DaoFactory() {
+		//constructeur privé pour interdire new DaoFactory() depuis une autre classe
+		//et obliger à appeler DaoFactory.getInstance();
+	}
+	
 	/* method factory */
 	public ProductDao createProductDao() {
 		ProductDao productDao=null; //type de retour = interface ou classe abstraite
