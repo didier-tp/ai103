@@ -12,7 +12,7 @@ public class ProductDaoSimu implements ProductDao {
 	private Map<Long,Produit> mapProduits= new HashMap<Long,Produit>();
 	private Long lastNumero;
 	
-	ProductDaoSimu(){
+	public ProductDaoSimu(){
 		mapProduits.put(1L, new Produit(1L,"les cervelets", 2.5));
 		mapProduits.put(2L, new Produit(2L,"les oeufs JB", 3.5));
 		mapProduits.put(3L, new Produit(3L,"les designs pas ternes", 13.5));
