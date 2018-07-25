@@ -18,6 +18,8 @@ public class ProductDaoJdbc implements ProductDao {
 	private Connection etablirConnection() throws SQLException {
      //version temporaire sans factory:
 	 DataSource ds = new SimpleDataSource();	
+	 //un objet DataSource correspond à un objet spécialisé dans l'établissement d'une connexion 
+	 //jdbc (Design pattern stratégie) . Le DAO délègue maintenant la connexion au DataSource.
      return ds.getConnection();
 	}
 	

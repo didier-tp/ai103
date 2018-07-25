@@ -13,9 +13,10 @@ public class ProductDaoSimu implements ProductDao {
 	private Long lastNumero;
 	
 	ProductDaoSimu(){
-		mapProduits.put(1L, new Produit(1L,"p1", 2.5));
-		mapProduits.put(2L, new Produit(2L,"p2", 3.5));
-		lastNumero=2L;
+		mapProduits.put(1L, new Produit(1L,"les cervelets", 2.5));
+		mapProduits.put(2L, new Produit(2L,"les oeufs JB", 3.5));
+		mapProduits.put(3L, new Produit(3L,"les designs pas ternes", 13.5));
+		lastNumero=3L;
 	}
 
 	public Produit insererNouveauProduit(Produit p) {
