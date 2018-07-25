@@ -2,6 +2,7 @@ package fr.afcepf.ai103.test;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class TestDao {
 		
 		//version a : avec DaoFactory et sans singleton:
 		DaoFactory daoFactory = new DaoFactory();
-		this.productDao = daoFactory.createProductDao();
+		this.productDao = daoFactory.createProductDao();//dao construit en version JDBC ou Simu ou JPA
 	}
 	
 	@Test
@@ -28,6 +29,7 @@ public class TestDao {
 		Produit nouveauProd = new Produit(null,"nouveau produit que j'aime",2.56);
 		nouveauProd = productDao.insererNouveauProduit(nouveauProd);
 		System.out.println("numero du produit insere=" + nouveauProd.getNumero());
+		Assert.assertTrue(nouveauProd.getNumero()>0);
 		
 		Produit produit2Modifie = new Produit(2L,"super super stylo",4.23);
 		productDao.mettreAjourProduit(produit2Modifie);
