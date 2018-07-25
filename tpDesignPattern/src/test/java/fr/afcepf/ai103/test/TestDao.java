@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.afcepf.ai103.dao.ProductDao;
-import fr.afcepf.ai103.dao.ProductDaoJdbc;
 import fr.afcepf.ai103.data.Produit;
+import fr.afcepf.ai103.factory.DaoFactory;
 
 public class TestDao {
 	
@@ -15,7 +15,12 @@ public class TestDao {
 	
 	@Before
 	public void initDao() {
-		this.productDao = new ProductDaoJdbc();
+		//version originale sans Fabrique ni singleton:
+		//this.productDao = new ProductDaoJdbc();
+		
+		//version a : avec DaoFactory et sans singleton:
+		DaoFactory daoFactory = new DaoFactory();
+		this.productDao = daoFactory.createProductDao();
 	}
 	
 	@Test

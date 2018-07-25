@@ -21,7 +21,8 @@ public class DaoFactory {
 		
 		//version 1 (sans fichier de config):
 		productDao = new ProductDaoSimu();
-		//ou bien productDao = new ProductDaoJdbc();
+		//ou bien 
+		//productDao = new ProductDaoJdbc();
 		//ou bien productDao = new ProductDaoJpa();
 		
 		return productDao;
