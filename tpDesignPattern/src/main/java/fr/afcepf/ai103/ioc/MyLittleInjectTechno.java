@@ -9,7 +9,7 @@ import fr.afcepf.ai103.annotations.MyInject;
 import fr.afcepf.ai103.data.Produit;
 import fr.afcepf.ai103.service.ServiceProduit;
 
-public class MyLittleInjectThechno {
+public class MyLittleInjectTechno {
 	
 	private static Map<String,Object> mapTypeInstance = new HashMap<String,Object>();
 	
