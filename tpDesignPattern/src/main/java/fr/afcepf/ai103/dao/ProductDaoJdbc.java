@@ -10,9 +10,20 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import fr.afcepf.ai103.annotations.MyComponent;
 import fr.afcepf.ai103.data.Produit;
 import fr.afcepf.ai103.ds.SimpleDataSource;
-
+/*
+ * En placant l'annotation @MyComponent ou un equivalent ici
+ * on demande à une technologie d'injection de dépendances
+ * de automatiquement instancier cette classe et de l'utiliser plus tard
+ * au niveaux des @Inject ou @MyInject
+ */
+// equivalent JSF : @ManagedBean
+// equivalent EJB : @Stateless ou @Singleton
+// equivalent Spring : @Component
+// equivalent CDI/JEE6 : @Named
+//@MyComponent 
 public class ProductDaoJdbc implements ProductDao {
 	
 	private Connection etablirConnection() throws SQLException {
@@ -21,6 +32,10 @@ public class ProductDaoJdbc implements ProductDao {
 	 //un objet DataSource correspond à un objet spécialisé dans l'établissement d'une connexion 
 	 //jdbc (Design pattern stratégie) . Le DAO délègue maintenant la connexion au DataSource.
      return ds.getConnection();
+	}
+	
+	public ProductDaoJdbc(){
+		System.out.println("ProductDaoJdbc");
 	}
 	
 	public static Long getAutoIncrPk(PreparedStatement pst ) {

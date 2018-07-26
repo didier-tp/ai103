@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.afcepf.ai103.annotations.MyComponent;
 import fr.afcepf.ai103.data.Produit;
 
+@MyComponent
 public class ProductDaoSimu implements ProductDao {
 	
 	private Map<Long,Produit> mapProduits= new HashMap<Long,Produit>();
@@ -17,6 +19,7 @@ public class ProductDaoSimu implements ProductDao {
 		mapProduits.put(2L, new Produit(2L,"les oeufs JB", 3.5));
 		mapProduits.put(3L, new Produit(3L,"les designs pas ternes", 13.5));
 		lastNumero=3L;
+		System.out.println("ProductDaoSimu");
 	}
 
 	public Produit insererNouveauProduit(Produit p) {
