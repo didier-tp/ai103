@@ -1,42 +1,32 @@
 
 function initComportementJs(){
 	console.log("initComportementJs");
-	var btnMultiplication =  document.querySelector("#btnMultiplication");
-	//on enregistre le déclenchement de la fonction calculerMultiplication()
-	//en l'associant à l'événement "click" sur la zone dont d'id est btnMultiplication
-	btnMultiplication.addEventListener("click",calculerMultiplication,false);
+	var btnEnregistrer =  document.querySelector("#btnEnregistrer");
+	btnEnregistrer.addEventListener("click",enregistrer,false);
 }
 
-function calculerMultiplication(){
-    console.log("calculerMultiplication");
-	calculerOperation("*");
+//fonction constructeur pour type d'objet "Client"
+function Client(nom, prenom){
+	this.nom = nom;
+	this.prenom = prenom;
 }
 
-function calculerOperation(pOperation){
+function enregistrer(){
+		  var nom =  document.querySelector("#nom").value; 
+		  var prenom =   document.querySelector("#prenom").value;  
 		  
-		  var a =  document.querySelector("#a").value; //document.getElementById("a").value;
-		  console.log("a="+a);
-		  var b =   document.querySelector("#b").value;  //document.getElementById("b").value;
-		  console.log("b="+b);
+		  var client = new Client(nom,prenom);//création d'une instance de Client
 		  
-		  var res = 0;
-		  if(pOperation == '+'){
-		      res = Number(a)+Number(b); // le + déclenche une concaténation entre 2 string
-		                 //ou bien une addition entre 2 choses numériques
-		    }else if(pOperation == '*'){
-			  res=a*b;
-		   }
+		  //on peut dynamiquement ajouter des propriétés supplémentaires sur l'objet client :
+		  client.telephone = document.querySelector("#telephone").value;
+		  client.adresse = document.querySelector("#adresse").value;
+		  client.email = document.querySelector("#email").value;
+		   
+		  // JSON.stringify() est une fonction prédéfinie de javascript qui construit automatiquement
+		  // une chaine de caractère au format JSON à partir de toutes les valeurs d'un objet javascript
+		  // ça ressemble un peu au .toString() de java ou à la serialization java
+	      var clientAsJsonString = JSON.stringify(client);
 		  
-		  //document.getElementById("spanRes").innerHTML = res;
-          document.querySelector("#spanRes").innerHTML = res;
-		  
-		  document.querySelector(".enEvidence").style.backgroundColor = "yellow";	
-          /* 
-          var tabInputs = document.querySelectorAll("input");
-		  for( index in tabInputs){
-			  if(tabInputs[index] != null)
-			     tabInputs[index].style.backgroundColor = "green";	
-		  }
-          */
-          		  
-		}
+          document.querySelector("#spanRes").innerHTML = clientAsJsonString;
+		 	  
+}
