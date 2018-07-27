@@ -35,7 +35,15 @@ var tabClients = []; //new Array();
 function enregistrer(){
 		  var nom =  document.querySelector("#nom").value; 
 		  var prenom =   document.querySelector("#prenom").value;  
-		  var client = new Client(nom,prenom);//création d'une instance de Client
+		  
+		  //var client = new Client(nom,prenom);//création d'une instance de Client
+		  var client = {
+			numClient : null,
+			date : "2018-07-27",
+			nom : nom ,
+			prenom : prenom 
+		  }; //expression "objet lit(t)eral javascript" (très proche du format JSON) .
+		  
 		  //var client = new Object(); /* plus précis que new Array(); */  
 		  //client.prenom=prenom;	  client.nom=nom;
 		  
