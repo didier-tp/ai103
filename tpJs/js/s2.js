@@ -1,3 +1,17 @@
+
+function initComportementJs(){
+	console.log("initComportementJs");
+	var btnMultiplication =  document.querySelector("#btnMultiplication");
+	//on enregistre le déclenchement de la fonction calculerMultiplication()
+	//en l'associant à l'événement "click" sur la zone dont d'id est btnMultiplication
+	btnMultiplication.addEventListener("click",calculerMultiplication,false);
+}
+
+function calculerMultiplication(){
+    console.log("calculerMultiplication");
+	calculerOperation("*");
+}
+
 function calculerOperation(pOperation){
 		  
 		  var a =  document.querySelector("#a").value; //document.getElementById("a").value;
