@@ -7,8 +7,8 @@ function initComportementJs(){
 
 //fonction constructeur pour type d'objet "Client"
 function Client(nom, prenom){
-	this.nom = nom;
 	this.prenom = prenom;
+	this.nom = nom;
 }
 
 function myStringify(obj){
