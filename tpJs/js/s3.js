@@ -29,15 +29,15 @@ function myStringify(obj){
 	jsonString +="}";
 	return jsonString;
 }
-
+//variable au dehors d'une fonction pour quelle soit globale à toute l'appli.
+var tabClients = []; //new Array();
+ 
 function enregistrer(){
 		  var nom =  document.querySelector("#nom").value; 
 		  var prenom =   document.querySelector("#prenom").value;  
-		  
 		  var client = new Client(nom,prenom);//création d'une instance de Client
 		  //var client = new Object(); /* plus précis que new Array(); */  
 		  //client.prenom=prenom;	  client.nom=nom;
-		  
 		  
 		  //on peut dynamiquement ajouter des propriétés supplémentaires sur l'objet client :
 		  client.telephone = document.querySelector("#telephone").value;
@@ -51,9 +51,10 @@ function enregistrer(){
 		  // JSON.stringify() est une fonction prédéfinie de javascript qui construit automatiquement
 		  // une chaine de caractère au format JSON à partir de toutes les valeurs d'un objet javascript
 		  // ça ressemble un peu au .toString() de java ou à la serialization java
-	      //var clientAsJsonString = JSON.stringify(client);
-		  var clientAsJsonString = myStringify(client);
+	      var clientAsJsonString = JSON.stringify(client);
+		  //var clientAsJsonString = myStringify(client);
+		  tabClients.push(client);
 		  
           document.querySelector("#spanRes").innerHTML = clientAsJsonString;
-		 	  
+		  document.querySelector("#spanTableau").innerHTML = JSON.stringify(tabClients);		  
 }
