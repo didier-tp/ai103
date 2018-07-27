@@ -36,6 +36,7 @@ public class MyLittleInjectTechno {
 			Class mc = Class.forName("fr.afcepf.ai103.service.ServiceProduitsImpl");
 			Field[] tabFields = mc.getDeclaredFields();
 			for(Field f : tabFields) {
+				System.out.println("field de nom = " + f.getName() + " et de type " + f.getType().getName());
 				if(f.isAnnotationPresent(MyInject.class)) {
 					f.setAccessible(true);
 					System.out.println("MyInject detecté sur " + f.getName());

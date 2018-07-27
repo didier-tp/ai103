@@ -21,6 +21,9 @@ public class ServiceProduitsImpl implements ServiceProduit {
 	@MyInject(comment="pour paramétrer besoin injection de dépendance") 
 	private ProductDao productDao ; // sans @Inject ou @MyInject ça resterait à null .
 	
+	private String commentaireQuiVaBien="no comment";
+	private Long compteurQuiVaBien = 0L;
+	
 	
 	/*// sans injection de dépendances
 	private ProductDao productDao = DaoFactory.getInstance().createProductDao();
