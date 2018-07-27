@@ -9,6 +9,9 @@ function initComportementJs(){
 function Client(nom, prenom){
 	this.prenom = prenom;
 	this.nom = nom;
+	/*this.affInConsole = function() {
+		console.log(JSON.stringify(this));
+	};*/
 }
 
 function myStringify(obj){
@@ -32,19 +35,24 @@ function enregistrer(){
 		  var prenom =   document.querySelector("#prenom").value;  
 		  
 		  var client = new Client(nom,prenom);//création d'une instance de Client
+		  //var client = new Object(); /* plus précis que new Array(); */  
+		  //client.prenom=prenom;	  client.nom=nom;
+		  
 		  
 		  //on peut dynamiquement ajouter des propriétés supplémentaires sur l'objet client :
 		  client.telephone = document.querySelector("#telephone").value;
 		  client.adresse = document.querySelector("#adresse").value;
 		  client.email = document.querySelector("#email").value;
 		  client["age"]=30; //client.age=30;
-		  client.estFou=false;
+		  client.estFou=false; 
+		  maisVousEtesFou="Oh oui !"  ;   console.log(maisVousEtesFou)
+		  //client.affInConsole()
 		   
 		  // JSON.stringify() est une fonction prédéfinie de javascript qui construit automatiquement
 		  // une chaine de caractère au format JSON à partir de toutes les valeurs d'un objet javascript
 		  // ça ressemble un peu au .toString() de java ou à la serialization java
-	      var clientAsJsonString = JSON.stringify(client);
-		  //var clientAsJsonString = myStringify(client);
+	      //var clientAsJsonString = JSON.stringify(client);
+		  var clientAsJsonString = myStringify(client);
 		  
           document.querySelector("#spanRes").innerHTML = clientAsJsonString;
 		 	  
