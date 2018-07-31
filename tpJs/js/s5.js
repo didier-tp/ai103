@@ -7,10 +7,8 @@ function initComportementJs(){
 
  
 function calculerEtAfficher(){
-		  
      var fx =  document.querySelector("#fx").value;
 	 var x = 0;
-	 
 	 
 	 var canvasElement = document.getElementById("idCanvas");
 	 var ctx = canvasElement.getContext("2d");
@@ -21,25 +19,20 @@ function calculerEtAfficher(){
 	var oh = h/2 
 	var ol=l/2;
 	var ech=100;
-	
 	ctx.moveTo(0,oh); ctx.lineTo(l,oh); //axe horizontal
 	ctx.moveTo(ol,0); ctx.lineTo(ol,h); //axe vertical
-	var x1=null;
+	var x1=null;ech
 	var y1=null;
 		 
 	for(x=-10;x<=10;x=x+0.1){
 		 y = eval(fx);
-		 
-		 var x2=x * 100 + oh;
-		 var y2= -y * 100 + ol;
+		 var x2=x * ech + oh;
+		 var y2= -y * ech + ol;
 		 console.log("x="+x +" ,y=" + y + ",x1="+x1 +" ,y1=" + y1 + ",x2="+x2 +" ,y2=" + y2);
-		 if(x1!=null){
-			ctx.moveTo(x1,y1);	
-            ctx.lineTo(x2,y2);
+		 if(x1!=null){			ctx.moveTo(x1,y1);	            ctx.lineTo(x2,y2);
 		 }	
          x1=x2; y1=y2; //for next loop	iteration	 
 	 }
-		
      ctx.closePath();
 	 ctx.stroke(); 	  
 }
