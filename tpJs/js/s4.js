@@ -1,8 +1,21 @@
 
+ var eltDivA; // variable de portee globale
+
 function initComportementJs(){
 	console.log("initComportementJs");
+	
+	eltDivA = document.getElementById("divA"); //ou .querySelector("#divA")
+	
 	var btnAction =  document.querySelector("#btnAction");
 	btnAction.addEventListener("click",doAction,false);
+	
+	document.querySelector("#btnMontrerCacher").addEventListener("click",function(evt){
+		if(eltDivA.style.display == "none" )
+			eltDivA.style.display = "block";
+		else 
+			eltDivA.style.display = "none"
+	},false);
+	
 }
 
 function doAction(){
@@ -37,7 +50,7 @@ function doAction(){
 	}, false);
 	
 	
-    var eltDivA = document.getElementById("divA"); //ou .querySelector("#divA")
+   
 	
 	var nouvelEltP = document.createElement("p");
 	eltDivA.appendChild(nouvelEltP);
