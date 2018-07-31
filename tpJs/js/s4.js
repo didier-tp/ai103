@@ -8,16 +8,34 @@ function initComportementJs(){
 function doAction(){
 	
 	var eltListe = document.getElementById("idListe"); //ou .querySelector("#idListe")
+	var eltSelect = document.getElementById("idSelect"); //ou .querySelector("#idSelect")
+	
 	var listeValeurAsJsonString=
 	'[ { "label" : "janvier" , "value" : 120} , { "label" : "fevrier" , "value" : 70 } ]';
 	var tableauObjetsJs = JSON.parse(listeValeurAsJsonString);
 	for(i=0;i<tableauObjetsJs.length;i++){
+		var objetJs = tableauObjetsJs[i];
+		//ajout dans liste à puces <ul> :
 		var eltLI = document.createElement("li"); 
 		eltListe.appendChild(eltLI); //ajouter <li> dans parent <ul>
-		var objetJs = tableauObjetsJs[i]
 		var noeudTexte = document.createTextNode(objetJs.label + " : " + objetJs.value);
 	    eltLI.appendChild(noeudTexte);
+		
+		//ajout dans liste deroulante <select>:
+		var eltOption = document.createElement("option"); 
+		eltSelect.appendChild(eltOption);
+		var noeudTexte2 = document.createTextNode(objetJs.label + " : " + objetJs.value);
+	    eltOption.appendChild(noeudTexte2);
+		eltOption.setAttribute("value",JSON.stringify(objetJs));
 	}
+	
+	eltSelect.addEventListener("change",function (evt){
+		console.log("changement de selection sur " + evt.target.nodeName );
+		console.log("de id=" + evt.target.id );
+		console.log("de valeur=" + evt.target.value );
+		document.getElementById("spanMsg").innerHTML = "valeur selectionnee:" + evt.target.value ;
+	}, false);
+	
 	
     var eltDivA = document.getElementById("divA"); //ou .querySelector("#divA")
 	
